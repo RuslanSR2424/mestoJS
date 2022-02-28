@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./page/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./image/logo.svg" alt="Логотип">
+    </header>
+    <main>
+        <section class="profile">
+            <div class="profile__image"></div>
+            <div class="profile__info">
+                <div class="profile__info-text">
+                    <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
+                <button class="profile__button-edit" type="button"></button>
+            </div>
+            <button class="profile__button-add" type="button"></button>
+        </section>
+        <section class="elements">
+            <ul class="element-list">
+                <template class="element-template">
+                    <li class="element-list__item">
+                        <img class="element-list__img" src(unknow) alt>
+                        <button type="button" class="element-list__delete"></button>
+                        <div class="element-list__content">
+                            <h2 class="element-list__title"></h2>
+                            <button class="element-list__like" type="button"></button>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__label">© 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup-form-profile">
+        <div class="popup-profile">
+            <button class="popup-profile__close" type="button"></button>
+            <h2 class="popup-profile__title">Редактировать профиль</h2>
+            <form class="popup__form" name="profile">
+                <input class="popup__item popup__item-name" type="text" placeholder="Жак-Ив Кусто" name="name"
+                    id="name">
+                <input class="popup__item popup__item-description" type="text" placeholder="Исследователь океана"
+                    name="description" id="description">
+                <button class="popup-profile__save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup-elements">
+        <div class="popup-profile">
+            <button class="popup-elements__close" type="button"></button>
+            <h2 class="popup-elements__title">Новое место</h2>
+            <form class="popup__form" name="element">
+                <input class="popup__item popup__item-place" type="text" name="place" placeholder="Название">
+                <input class="popup__item popup__item-picture" type="text" name="picture" placeholder="Ссылка на фото">
+                <button class="popup-elements__save" type="submit">Добавить</button>
+            </form>
+        </div>
+    </div>
+    <div class="element-open-img">
+        <div class="element-open-img__container">
+            <button class="popup-elements__close" type="button"></button>
+            <img class="element-open-img__img" src(unknow) alt>
+            <h2 class="element-open-img__title"></h2>
+        </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,18 @@
+.footer__label {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+    margin: 66px auto 60px 19px;
+}
+
+
+@media (max-width: 450px) {
+    .footer__label {
+        margin: 48px 19px 36px 19px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

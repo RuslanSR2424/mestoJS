@@ -1,0 +1,30 @@
+.profile {
+    display: flex;
+    max-width: 880px;
+    min-height: 120px;
+    justify-content: space-between;
+    margin: 40px auto auto auto;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 500px) and (max-width: 1000px) {
+    .profile {
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 710px) {
+    .profile {
+        justify-content: center;
+        align-items: center;
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .profile {
+        width: 282px;
+        height: 286px;
+        margin: 42px auto auto auto;
+    }
+}

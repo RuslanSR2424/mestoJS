@@ -1,0 +1,16 @@
+.element-list__like {
+    height: 22px;
+    width: 19px;
+    background-image: url(../../../image/like.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; 
+    margin: 30px 20px 30px auto;
+    border: none;
+    background-color: #FFF;
+    transition: linear 0.5s;
+}
+
+.element-list__like:hover {
+    opacity: 0.6;
+}
