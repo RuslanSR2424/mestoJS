@@ -15,10 +15,22 @@ const elementList = document.querySelector('.element-list');
 const elementTemplate = document.querySelector('.element-template').content;
 const popupItemPlace = popupFormCard.querySelector('.popup__item-place');
 const popupItemPicture = popupFormCard.querySelector('.popup__item-picture');
-const popupFormElements = popupFormCard.querySelector('.popup__form');
+const popupFormElements = popupFormCard.querySelector('.popup__form');  
+const nameInput = popupFormProfile.querySelector ('.popup__item-name');
+const descriptionInput = popupFormProfile.querySelector ('.popup__item-description');
+//В вашем коментарии указано что я должен вместо элемента на строке 18 использовать тот что указан на строке 6 для очищения формы. Но, она не очищает формы и выдаёт ошибку,
+https://askdev.ru/q/kak-sbrosit-ochistit-formu-cherez-javascript-20042/ на этом сайте я нашёл решение, которое использую.
 
 
+// Функции попап (закрытие и открытие)
 
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+}
 
 // изменения профиля
 
@@ -27,9 +39,7 @@ buttonPopupProfileEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
 });
-//Отслеживаем поля вводимых данных в попап профиля
-const nameInput = popupFormProfile.querySelector ('.popup__item-name');
-const descriptionInput = popupFormProfile.querySelector ('.popup__item-description');
+
 // Присваивание вводимых данных новому имени и подзаголовка для профиля
 function changeProfileInfo(evt) {
   evt.preventDefault();
@@ -38,29 +48,24 @@ function changeProfileInfo(evt) {
   closePopup(popupFormProfile);
 }
 
-popupFormProfile.addEventListener('submit', changeProfileInfo);
-
-
 // Добавление карточки
-
-
 function renderCardElement(element, container) {
   container.prepend(element);
 };
 
 function createCardElement(elementName, elementUrl) {
-    const Card = elementTemplate.cloneNode(true);
+    const card = elementTemplate.cloneNode(true);
     //Отслеживание Лайка, Удаления, и Самой картинки
-    const image = Card.querySelector('.element-list__img');
-    const DeleteElement = Card.querySelector ('.element-list__delete');
-    const buttonLike = Card.querySelector('.element-list__like');
+    const image = card.querySelector('.element-list__img');
+    const deleteElement = card.querySelector ('.element-list__delete');
+    const buttonLike = card.querySelector('.element-list__like');
     //Присваиваем ссылки и наименование карточек из массива для нашей заготовки под карточки
     image.src = elementUrl;  
     image.alt = elementName;
-    Card.querySelector('.element-list__title').textContent = elementName;
+    card.querySelector('.element-list__title').textContent = elementName;
     // Удаление карточки
-    DeleteElement.addEventListener ('click', () => {
-      const listItem = DeleteElement.closest('.element-list__item');
+    deleteElement.addEventListener ('click', () => {
+      const listItem = deleteElement.closest('.element-list__item');
     listItem.remove();
     });
     // Лайк на карточку
@@ -73,15 +78,10 @@ function createCardElement(elementName, elementUrl) {
       imageContainerItem.src = image.src; 
       imageContainerItem.alt = image.alt;
       imageContainer.querySelector('.element-open-img__title').textContent = image.alt;
-      openImageFunction();
+      openPopup(openImage);
     });
-    return Card;
+    return card;
   };
-  //Вызываем и создаём карточки из массива
-  initialCards.forEach((item) => {
-    const element = createCardElement(item.name, item.link);
-    renderCardElement(element, elementList);
-  });
 
 // создание новой карточки
 function addElementList(evt) {
@@ -91,26 +91,6 @@ function addElementList(evt) {
   popupFormElements.reset();
 };
 
-popupFormCard.addEventListener('submit', addElementList);
-
-
-// Открываем и закрываем попап Картинки
-
-function popupImageClose(){
-  openImage.classList.remove('element-open-img__opened');
-}
-
-openImage.addEventListener('click', popupImageClose);
-
-function openImageFunction (){
-  openImage.classList.add('element-open-img__opened');
-};
-
-// Закрываем попап профиля
-
-buttonPopupProfileClose.addEventListener('click', () => closePopup(popupFormProfile));
-
-
 //Открываем и закрываем попап вводимых данных для новой карточки
 
 buttonEditCard.addEventListener('click', () => openPopup(popupFormCard));
@@ -118,13 +98,31 @@ buttonEditCard.addEventListener('click', () => openPopup(popupFormCard));
 buttonPopupCardClose.addEventListener('click', () => closePopup(popupFormCard));
 
 
-// Функции попап (закрытие и открытие)
 
-function openPopup (popup) {
-  popup.classList.add('popup_opened');
-}
 
-function closePopup (popup) {
-  popup.classList.remove('popup_opened');
-}
+//Вызываем и создаём карточки из массива
+initialCards.forEach((item) => {
+  const element = createCardElement(item.name, item.link);
+  renderCardElement(element, elementList);
+});
+
+//Вызов функции создания карточки
+
+popupFormCard.addEventListener('submit', addElementList);
+
+
+// Закрываем попап Картинки
+
+openImage.addEventListener('click', () => closePopup(openImage));
+
+// Закрываем попап профиля
+
+buttonPopupProfileClose.addEventListener('click', () => closePopup(popupFormProfile));
+
+//Вызываем функцию изменения профиля
+
+popupFormProfile.addEventListener('submit', changeProfileInfo);
+
+
+
 
