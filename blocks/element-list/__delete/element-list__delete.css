@@ -10,7 +10,7 @@
     border: none;
     background-position: center;
     background-size: contain;
-    transition: linear 0.5s;
+    cursor: pointer;
 }
 
 .element-list__delete:hover {

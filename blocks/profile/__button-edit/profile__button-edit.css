@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: linear 0.5s;
+    cursor: pointer;
 }
 
 @media (max-width: 500px) {

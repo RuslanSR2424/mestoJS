@@ -9,6 +9,8 @@
     white-space: nowrap;
     overflow: hidden;
     font-style: normal;
+    text-overflow: ellipsis;
+    max-width: 280px;
 }
 
 @media (max-width: 500px) {

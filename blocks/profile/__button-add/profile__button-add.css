@@ -9,6 +9,7 @@
     background-position: center;
     transition: linear 0.5s;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 @media  (max-width: 686px) {

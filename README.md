@@ -1,6 +1,6 @@
 # Проект: Место
 
-Ссылка: https://ruslansr2424.github.io/mesto-project/
+Ссылка: https://ruslansr2424.github.io/mestoJS/
 
 **Figma**
 

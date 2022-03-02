@@ -9,6 +9,7 @@
     border: none;
     background-color: #FFF;
     transition: linear 0.5s;
+    cursor: pointer;
 }
 
 .element-list__like:hover {
