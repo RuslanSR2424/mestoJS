@@ -1,0 +1,29 @@
+.element-open-img__close {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -32px;
+    right: -32px;
+    background-image: url(../../../image/close_icon.svg);
+    background-position: center;
+    object-fit: contain;
+    background-color: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: linear 0.5s;
+    cursor: pointer;
+}
+
+@media (max-width: 590px) {
+    .element-open-img__close {
+        width: 20px;
+        height: 20px;
+        top: -32px;
+        right: -0px;
+        background-image: url(../../../image/close_icon_small.svg);
+    }
+}
+
+.element-open-img__close:hover {
+    opacity: 0.6;
+}

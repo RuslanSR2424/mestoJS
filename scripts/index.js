@@ -3,7 +3,7 @@
 const buttonPopupProfileEdit = document.querySelector ('.profile__button-edit');
 const popupFormProfile = document.querySelector ('.popup-form-profile');
 const buttonPopupProfileClose = document.querySelector ('.popup-profile__close');
-const popupFormCard = document.querySelector ('.popup-elements');
+const popupAddCard = document.querySelector ('.popup-elements');
 const buttonEditCard = document.querySelector ('.profile__button-add');
 const buttonPopupCardClose = document.querySelector ('.popup-elements__close');
 const profileName = document.querySelector ('.profile__user-name');
@@ -13,13 +13,14 @@ const imageContainerItem = imageContainer.querySelector ('.element-open-img__img
 const openImage = document.querySelector ('.element-open-img');
 const elementList = document.querySelector('.element-list');
 const elementTemplate = document.querySelector('.element-template').content;
-const popupItemPlace = popupFormCard.querySelector('.popup__item-place');
-const popupItemPicture = popupFormCard.querySelector('.popup__item-picture');
-const popupFormElements = popupFormCard.querySelector('.popup__form');  
+const popupItemPlace = popupAddCard.querySelector('.popup__item-place');
+const popupItemPicture = popupAddCard.querySelector('.popup__item-picture');
+const formAddCard = popupAddCard.querySelector('.popup__form__elements');  
 const nameInput = popupFormProfile.querySelector ('.popup__item-name');
 const descriptionInput = popupFormProfile.querySelector ('.popup__item-description');
-//В вашем коментарии указано что я должен вместо элемента на строке 18 использовать тот что указан на строке 6 для очищения формы. Но, она не очищает формы и выдаёт ошибку,
-https://askdev.ru/q/kak-sbrosit-ochistit-formu-cherez-javascript-20042/ на этом сайте я нашёл решение, которое использую.
+const popupImageClose = document.querySelector ('.element-open-img__close');
+const formAddProfile = document.querySelector ('.popup__form__profile');
+
 
 
 // Функции попап (закрытие и открытие)
@@ -32,7 +33,7 @@ function closePopup (popup) {
   popup.classList.remove('popup_opened');
 }
 
-// изменения профиля
+// Функция изменения профиля
 
 buttonPopupProfileEdit.addEventListener('click', () => {
   openPopup(popupFormProfile);
@@ -87,15 +88,15 @@ function createCardElement(elementName, elementUrl) {
 function addElementList(evt) {
   evt.preventDefault();
   elementList.prepend(createCardElement(popupItemPlace.value, popupItemPicture.value));
-  closePopup (popupFormCard);
-  popupFormElements.reset();
+  closePopup (popupAddCard);
+  formAddCard.reset();
 };
 
 //Открываем и закрываем попап вводимых данных для новой карточки
 
-buttonEditCard.addEventListener('click', () => openPopup(popupFormCard));
+buttonEditCard.addEventListener('click', () => openPopup(popupAddCard));
 
-buttonPopupCardClose.addEventListener('click', () => closePopup(popupFormCard));
+buttonPopupCardClose.addEventListener('click', () => closePopup(popupAddCard));
 
 
 
@@ -108,12 +109,12 @@ initialCards.forEach((item) => {
 
 //Вызов функции создания карточки
 
-popupFormCard.addEventListener('submit', addElementList);
+formAddCard.addEventListener('submit', addElementList);
 
 
 // Закрываем попап Картинки
 
-openImage.addEventListener('click', () => closePopup(openImage));
+popupImageClose.addEventListener('click', () => closePopup(openImage));
 
 // Закрываем попап профиля
 
@@ -121,7 +122,7 @@ buttonPopupProfileClose.addEventListener('click', () => closePopup(popupFormProf
 
 //Вызываем функцию изменения профиля
 
-popupFormProfile.addEventListener('submit', changeProfileInfo);
+formAddProfile.addEventListener('submit', changeProfileInfo);
 
 
 
