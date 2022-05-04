@@ -75,6 +75,23 @@
 @import url(../blocks/profile/__info-text/profile__info-text.css);
 
 
+.popup__form__error-novisual {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    margin: 5px 36px 0px 36px;
+    opacity: 0;
+}
 
+.popup__form__error-visual {
+    opacity: 1;
+}
+
+.popup__form__red-line {
+    border-bottom: 1px solid #FF0000;
+}
 
 

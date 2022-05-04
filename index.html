@@ -47,10 +47,12 @@
             <button class="popup-profile__close" type="button"></button>
             <h2 class="popup-profile__title">Редактировать профиль</h2>
             <form class="popup__form popup__form__profile" name="profile">
-                <input class="popup__item popup__item-name" type="text" placeholder="Жак-Ив Кусто" name="name"
+                <input class="popup__item popup__item-name popup__form__red-line" type="text" placeholder="Жак-Ив Кусто" name="name"
                     id="name">
+                    <p class="popup__form popup__form__error-novisual">Вы пропустили это поле</p>
                 <input class="popup__item popup__item-description" type="text" placeholder="Исследователь океана"
                     name="description" id="description">
+                    <p class="popup__form popup__form__error-novisual">Вы пропустили это поле</p>
                 <button class="popup-profile__save" type="submit">Сохранить</button>
             </form>
         </div>

@@ -23,6 +23,7 @@ const formAddProfile = document.querySelector ('.popup__form__profile');
 
 
 
+
 // Функции попап (закрытие и открытие)
 
 function openPopup (popup) {
@@ -32,6 +33,31 @@ function openPopup (popup) {
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
 }
+
+// Закрытие попап  по Esc
+
+function closeEscPopup (evt) {
+  if (evt.key === 'Escape') {
+    popupAddCard.classList.remove('popup_opened');
+    popupFormProfile.classList.remove('popup_opened')
+  }
+}
+
+//Функция ввода данных в профиль по клавише Enter
+
+function enterProfileInfo (evt) {
+  if (evt.key === 'Enter') {
+    changeProfileInfo()
+  }
+};
+
+//Функция ввода данных в карту по клавише Enter
+
+function enterElementList (evt) {
+  if (evt.key === 'Enter') {
+    addElementList()
+  }
+};
 
 // Функция изменения профиля
 
@@ -46,7 +72,7 @@ function changeProfileInfo(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  closePopup(popupFormProfile);
+  closePopup(popupFormProfile); 
 }
 
 // Добавление карточки
@@ -120,10 +146,19 @@ popupImageClose.addEventListener('click', () => closePopup(openImage));
 
 buttonPopupProfileClose.addEventListener('click', () => closePopup(popupFormProfile));
 
+
 //Вызываем функцию изменения профиля
 
 formAddProfile.addEventListener('submit', changeProfileInfo);
 
+//Закрытие попап по клавише Esc
 
+document.addEventListener('keydown', closeEscPopup);
 
+//Ввод данных в профиль по клавище Enter
 
+document.addEventListener('keydown', enterProfileInfo);
+
+//Ввод данных в карточку по клавище Enter
+
+document.addEventListener('keydown', enterElementList);
