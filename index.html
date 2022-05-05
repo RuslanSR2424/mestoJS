@@ -47,11 +47,11 @@
             <button class="popup-profile__close" type="button"></button>
             <h2 class="popup-profile__title">Редактировать профиль</h2>
             <form class="popup__form popup__form__profile" name="profile">
-                <input class="popup__item popup__item-name popup__form__red-line" type="text" placeholder="Жак-Ив Кусто" name="name"
-                    id="name">
+                <input class="popup__item popup__item-name popup__form__red-line" type="text"  name="name"
+                    id="name" required minlength="1">
                     <p class="popup__form popup__form__error-novisual">Вы пропустили это поле</p>
                 <input class="popup__item popup__item-description" type="text" placeholder="Исследователь океана"
-                    name="description" id="description">
+                    name="description" id="description" required minlength="1"> 
                     <p class="popup__form popup__form__error-novisual">Вы пропустили это поле</p>
                 <button class="popup-profile__save" type="submit">Сохранить</button>
             </form>
@@ -62,8 +62,8 @@
             <button class="popup-elements__close" type="button"></button>
             <h2 class="popup-elements__title">Новое место</h2>
             <form class="popup__form popup__form__elements" name="element">
-                <input class="popup__item popup__item-place" type="text" name="place" placeholder="Название">
-                <input class="popup__item popup__item-picture" type="text" name="picture" placeholder="Ссылка на фото">
+                <input class="popup__item popup__item-place" type="text" name="place" placeholder="Название" required minlength="1">
+                <input class="popup__item popup__item-picture" type="src" name="picture" placeholder="Ссылка на фото" required >
                 <button class="popup-elements__save" type="submit">Добавить</button>
             </form>
         </div>

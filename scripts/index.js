@@ -162,3 +162,69 @@ document.addEventListener('keydown', enterProfileInfo);
 //Ввод данных в карточку по клавище Enter
 
 document.addEventListener('keydown', enterElementList);
+
+//Валидация полей
+
+const formElement = document.querySelector('.popup__form');
+const formInput = formElement.querySelector('.popup__item');
+const formError = formElement.querySelector('.popup__form__error-novisual');
+
+//Добавление ошибки
+const showInputError = (formElement, formInput, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${formInput.id}-error`);
+  formInput.classList.add('popup__form__error-visual');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__form__error-visual');
+};
+
+//Убираем ошибку
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  // Остальной код такой же
+  inputElement.classList.remove('popup__form__error-visual');
+  errorElement.classList.remove('popup__form__error-visual');
+  errorElement.textContent = '';
+};
+
+//Validation
+
+const isValid = (formElement, formInput) => {
+  if (!formInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(formElement, formInput, formInput.validationMessage);
+  } else {
+    // Если проходит, скроем
+    hideInputError(formElement, formInput);
+  }
+};
+
+formElement.addEventListener('submit', function (evt) {
+  // Отменим стандартное поведение по сабмиту
+  evt.preventDefault();
+});
+
+// Вызовем функцию isValid на каждый ввод символа
+formInput.addEventListener('input', isValid); 
+
+
+const enableValidation = () => {
+  // Найдём все формы с указанным классом в DOM,
+  // сделаем из них массив методом Array.from
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+
+  // Переберём полученную коллекцию
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      // У каждой формы отменим стандартное поведение
+      evt.preventDefault();
+    });
+
+    // Для каждой формы вызовем функцию setEventListeners,
+    // передав ей элемент формы
+    setEventListeners(formElement);
+  });
+};
+
+// Вызовем функцию
+enableValidation(); 
